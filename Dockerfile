@@ -1,3 +1,6 @@
+# run this with docker build . -t sourceengineers/c-cpp-cmake
+# upload this with docker push sourceengineers/c-cpp-cmake
+
 FROM ubuntu:focal
 
 LABEL maintainer="Source Engineers GmbH" \
@@ -9,11 +12,12 @@ ENV TZ=Europe/Berlin
 RUN apt-get update -y && \
     apt-get install -y tzdata
 
-RUN apt-get install -y --no-install-recommends\
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends\
                 git \
                 curl \
-                gcc-10 \
-                g++-10 \
+                gcc \
+                g++ \
                 clang-10 \
                 build-essential \
                 cmake \
